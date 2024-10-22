@@ -32,11 +32,11 @@ pub fn count(lines: &[&str]) -> u32 {
                     // All horizontals are dash
                     let mut valid = true;
                     for h in j+1..l {
-                        if lines[i].chars().nth(h).unwrap() != '-' {
+                        if lines[i].chars().nth(h).unwrap() != '-' && lines[i].chars().nth(h).unwrap() != '+' {
                             valid = false;
                             break;
                         }
-                        if lines[k].chars().nth(h).unwrap() != '-' {
+                        if lines[k].chars().nth(h).unwrap() != '-' && lines[k].chars().nth(h).unwrap() != '+'{
                             valid = false;
                             break;
                         }
@@ -47,12 +47,12 @@ pub fn count(lines: &[&str]) -> u32 {
 
                     // All vertical are |
                     for v in i+1..k {
-                        if lines[v].chars().nth(j).unwrap() != '|' {
+                        if lines[v].chars().nth(j).unwrap() != '|' && lines[v].chars().nth(j).unwrap() != '+' {
                             valid = false;
                             break;
                         }
 
-                        if lines[v].chars().nth(l).unwrap() != '|' {
+                        if lines[v].chars().nth(l).unwrap() != '|' && lines[v].chars().nth(l).unwrap() != '+' {
                             valid = false;
                             break;
                         }
@@ -61,7 +61,6 @@ pub fn count(lines: &[&str]) -> u32 {
                     if !valid {
                         continue;
                     }
-                    println!("Bazinga {}{} -- {}{}", i,j,k,l);
                     ans += 1;
                 }
             }
